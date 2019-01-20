@@ -21,12 +21,9 @@ class RoomList extends Component {
       <section>
       {
         this.state.rooms.map( (room, index) =>
-        <tr className="rooms" key={index} />
+        <p className="rooms" key={index} />
         )
       }
-        <firebase
-
-        />
       </section>
     );
   }
