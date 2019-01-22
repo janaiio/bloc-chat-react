@@ -19,7 +19,8 @@ class RoomList extends Component {
     });
   }
 
-  createRoom(){
+  createRoom(e){
+    e.preventDefault()
     this.roomsRef.push({
       name: this.state.value // should be equal to text input value
     });
@@ -35,7 +36,7 @@ class RoomList extends Component {
           )
         }
 
-        <form onSubmit={this.createRoom}>
+        <form onSubmit={(e) => this.createRoom(e)}>
           <label>
             New Room Name:
             <input type="text" />
