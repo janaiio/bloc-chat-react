@@ -21,8 +21,14 @@ class RoomList extends Component {
   createRoom(e){
     e.preventDefault()
     this.roomsRef.push({
-      name: 'newRoomName' // should be equal to text input value
+      name: 'x' // should be equal to text input value -- currently outputting this value
     });
+  }
+
+  handleChange(e){
+    const newRoomName = ; // issue is in this value. See line 24
+    this.roomsRef.newRoomName = newRoomName;
+    this.setState({ newRoomName: newRoomName });
   }
 
   render() {
@@ -38,7 +44,7 @@ class RoomList extends Component {
         <form onSubmit={(e) => this.createRoom(e)}>
           <label>
             New Room Name:
-            <input type="text" />
+            <input type="text" name="newRoomName" onChange={this.handleChange}/>
           </label>
           <input type="submit" value="Submit" />
         </form>
