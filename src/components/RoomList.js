@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 class RoomList extends Component {
   constructor(props) {
     super(props);
-    this.state = { rooms: [] };
+    this.state = {
+      rooms: [],
+      newRoomName: ''
+    };
 
     this.roomsRef = this.props.firebase.database().ref('rooms');
   }
@@ -16,15 +19,35 @@ class RoomList extends Component {
     });
   }
 
+  createRoom(e){
+    const newRoomName = this.state.newRoomName;
+    e.preventDefault()
+    this.roomsRef.push({
+      name: newRoomName // should be equal to text input value -- currently outputting this value
+    });
+  }
+
+  handleChange(e){
+    this.setState({ newRoomName: e.target.value });
+  }
+
   render() {
     return (
       <section>
-      {
-        this.state.rooms.map( (room, index) =>
-        <p className="rooms" key={index} > {room.name}</p>,
-        console.log(this.state.rooms)
-        )
-      }
+        {
+          this.state.rooms.map( (room, index) =>
+          <p className="rooms" key={index} > {room.name}</p>,
+          console.log(this.state.rooms)
+          )
+        }
+
+        <form onSubmit={(e) => this.createRoom(e)}>
+          <label>
+            New Room Name:
+            <input type="text" value={this.state.newRoomName} onChange={ e => this.handleChange(e) }/>
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </section>
     );
   }
