@@ -17,7 +17,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeRoom: ''
+      activeRoom: '',
+      rooms: [],
+      newRoomName: ''
+
     };
   }
 
@@ -26,6 +29,14 @@ class App extends Component {
       <div className="App">
         <RoomList
           firebase={ firebase }
+          activeRoom={this.state.activeRoom}
+        />
+        <MessageList
+          firebase={ firebase }
+          activeRoom={this.state.activeRoom}
+        />
+        <ActiveRoom
+          activeRoom={this.state.activeRoom}
         />
       </div>
     );
