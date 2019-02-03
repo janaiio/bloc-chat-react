@@ -5,7 +5,8 @@ class RoomList extends Component {
     super(props);
     this.state = {
       rooms: [],
-      newRoomName: ''
+      newRoomName: '',
+      activeRoom: ''
     };
 
     this.roomsRef = this.props.firebase.database().ref('rooms');
@@ -23,7 +24,7 @@ class RoomList extends Component {
     const newRoomName = this.state.newRoomName;
     e.preventDefault()
     this.roomsRef.push({
-      name: newRoomName // should be equal to text input value -- currently outputting this value
+      name: newRoomName
     });
   }
 
