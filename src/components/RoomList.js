@@ -42,14 +42,13 @@ class RoomList extends Component {
         {
           this.state.rooms.map( (room, index) =>
           <p className="rooms" key={index} > {room.name}</p>,
-          console.log(this.state.rooms)
           )
         }
 
         <form onSubmit={(e) => this.createRoom(e)}>
           <label>
             New Room Name:
-            <input type="text" value={this.state.newRoomName} onChange={ e => this.handleChange(e) }/>
+            <input type="text" value={this.props.newRoomName} onChange={ e => this.handleChange(e) }/>
           </label>
           <input type="submit" value="Submit" />
         </form>

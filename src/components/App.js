@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList.js';
+import MessageList from './components/MessageList.js';
 
 var config = {
   apiKey: "AIzaSyAdYXd2A50qFgrA4h-5ps2Dn5C1OAuX2WU",
@@ -19,8 +20,8 @@ class App extends Component {
     this.state = {
       activeRoom: '',
       rooms: [],
-      newRoomName: ''
-
+      newRoomName: '',
+      messages: []
     };
   }
 
@@ -29,14 +30,14 @@ class App extends Component {
       <div className="App">
         <RoomList
           firebase={ firebase }
-          activeRoom={this.state.activeRoom}
+
         />
         <MessageList
           firebase={ firebase }
-          activeRoom={this.state.activeRoom}
+
         />
         <ActiveRoom
-          activeRoom={this.state.activeRoom}
+
         />
       </div>
     );
