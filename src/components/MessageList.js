@@ -4,7 +4,10 @@ class MessageList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      username: "<USERNAME HERE>",
+      content: "<CONTENT OF THE MESSAGE HERE>",
+      sentAt: "<TIME MESSAGE WAS SENT HERE>",
+      roomId: "<ROOM UID HERE>"
     };
 
     this.messagesRef = this.props.firebase.database().ref('messages');
